@@ -1,5 +1,6 @@
 interface Env {
-  CONTACT_SUBMISSIONS: KVNamespace;
+  CONTACT_SUBMISSIONS?: KVNamespace;
+  RESEND_API_KEY?: string;
 }
 
 interface ContactFormData {
@@ -72,6 +73,53 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
         submissionId,
         JSON.stringify(submission)
       );
+    }
+
+    if (context.env.RESEND_API_KEY) {
+      try {
+        const emailResponse = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${context.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'Load N Go <noreply@load-n-go.biz>',
+            to: ['info@load-n-go.biz'],
+            subject: `New Contact Form Submission from ${formData.name}`,
+            html: `
+              <h2>New Contact Form Submission</h2>
+              <p><strong>Name:</strong> ${formData.name}</p>
+              <p><strong>Email:</strong> ${formData.email}</p>
+              ${formData.phone ? `<p><strong>Phone:</strong> ${formData.phone}</p>` : ''}
+              <p><strong>Message:</strong></p>
+              <p>${formData.message.replace(/\n/g, '<br>')}</p>
+              <hr>
+              <p><small>Submission ID: ${submissionId}</small></p>
+              <p><small>Received: ${new Date(timestamp).toLocaleString()}</small></p>
+            `,
+            text: `
+New Contact Form Submission
+
+Name: ${formData.name}
+Email: ${formData.email}
+${formData.phone ? `Phone: ${formData.phone}\n` : ''}
+Message:
+${formData.message}
+
+---
+Submission ID: ${submissionId}
+Received: ${new Date(timestamp).toLocaleString()}
+            `,
+          }),
+        });
+
+        if (!emailResponse.ok) {
+          console.error('Failed to send email:', await emailResponse.text());
+        }
+      } catch (emailError) {
+        console.error('Error sending email:', emailError);
+      }
     }
 
     console.log('Contact form submission received:', {
