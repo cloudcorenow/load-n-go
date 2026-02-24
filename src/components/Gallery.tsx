@@ -8,7 +8,7 @@ export default function Gallery() {
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/53cbdb89-ca5d-4355-f801-4b29e1c5c800/public',
       alt: 'Load N-GO Laundromat facility',
-      title: 'Our Modern Facility'
+      title: 'Multiple Machines'
     },
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/19fa0568-ab7e-4114-d07d-6c2f3bc63800/public',
@@ -18,7 +18,7 @@ export default function Gallery() {
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/c27de66e-4195-4176-3afe-1d569b926d00/public',
       alt: 'Laundry machines interior view',
-      title: 'Multiple Machines Available'
+      title: 'Our Modern Facility'
     },
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/b92d83a9-fa75-4776-9962-ebc60c512300/public',
