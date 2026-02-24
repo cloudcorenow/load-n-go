@@ -1,6 +1,62 @@
-import { Send, MapPin, MessageSquare, Phone } from 'lucide-react';
+import { useState, FormEvent } from 'react';
+import { Send, MapPin, MessageSquare, Phone, CheckCircle, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: 'success' | 'error' | null;
+    message: string;
+  }>({ type: null, message: '' });
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
+
+    try {
+      const response = await fetch('/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to submit form');
+      }
+
+      setSubmitStatus({
+        type: 'success',
+        message: data.message || 'Thank you for contacting us! We\'ll get back to you soon.'
+      });
+
+      setFormData({ name: '', email: '', phone: '', message: '' });
+    } catch (error) {
+      setSubmitStatus({
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Something went wrong. Please try again.'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-[#2B7BBF] to-[#1E5A8F]">
       <div className="container mx-auto px-4">
@@ -18,16 +74,34 @@ export default function Contact() {
             <div className="card bg-white shadow-2xl">
               <div className="card-body p-8">
                 <h3 className="card-title text-2xl mb-6 text-gray-800">Send Us a Message</h3>
-                <form className="space-y-5">
+
+                {submitStatus.type && (
+                  <div className={`alert ${submitStatus.type === 'success' ? 'alert-success' : 'alert-error'} mb-4`}>
+                    <div className="flex items-center gap-2">
+                      {submitStatus.type === 'success' ? (
+                        <CheckCircle size={20} />
+                      ) : (
+                        <AlertCircle size={20} />
+                      )}
+                      <span>{submitStatus.message}</span>
+                    </div>
+                  </div>
+                )}
+
+                <form className="space-y-5" onSubmit={handleSubmit}>
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text font-semibold text-gray-700">Name</span>
                     </label>
                     <input
                       type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       placeholder="Your name"
                       className="input w-full bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#2B7BBF] focus:outline-none transition-all text-gray-800 placeholder:text-gray-400"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -37,9 +111,13 @@ export default function Contact() {
                     </label>
                     <input
                       type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       placeholder="your.email@example.com"
                       className="input w-full bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#2B7BBF] focus:outline-none transition-all text-gray-800 placeholder:text-gray-400"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -49,8 +127,12 @@ export default function Contact() {
                     </label>
                     <input
                       type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
                       placeholder="(555) 123-4567"
                       className="input w-full bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#2B7BBF] focus:outline-none transition-all text-gray-800 placeholder:text-gray-400"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -59,18 +141,32 @@ export default function Contact() {
                       <span className="label-text font-semibold text-gray-700">Message</span>
                     </label>
                     <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       placeholder="Your message..."
                       className="textarea h-32 w-full bg-gray-50 border-2 border-gray-200 focus:bg-white focus:border-[#2B7BBF] focus:outline-none transition-all text-gray-800 placeholder:text-gray-400 resize-none"
                       required
+                      disabled={isSubmitting}
                     ></textarea>
                   </div>
 
                   <button
                     type="submit"
-                    className="btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0 w-full text-lg h-12 shadow-md hover:shadow-lg transition-all"
+                    className="btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0 w-full text-lg h-12 shadow-md hover:shadow-lg transition-all disabled:opacity-50"
+                    disabled={isSubmitting}
                   >
-                    <Send size={20} />
-                    Send Message
+                    {isSubmitting ? (
+                      <>
+                        <span className="loading loading-spinner loading-sm"></span>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={20} />
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               </div>
