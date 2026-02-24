@@ -8,13 +8,12 @@ export default function Gallery() {
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/53cbdb89-ca5d-4355-f801-4b29e1c5c800/public',
       alt: 'Load N-GO Laundromat facility',
-      title: 'High-Efficiency Equipment'
-    },'
+      title: 'Our Modern Facility'
     },
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/19fa0568-ab7e-4114-d07d-6c2f3bc63800/public',
       alt: 'Commercial washers and dryers',
-      title: 'Our Modern Facility'
+      title: 'High-Efficiency Equipment'
     },
     {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/c27de66e-4195-4176-3afe-1d569b926d00/public',
