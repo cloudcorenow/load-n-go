@@ -20,6 +20,3 @@ export default function Flyer() {
     </section>
   );
 }
-
-
-export default Flyer
