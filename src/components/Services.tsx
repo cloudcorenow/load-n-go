@@ -37,15 +37,14 @@ export default function Services() {
       title: 'Clean Facility',
       sizes: ['Always Maintained'],
       description: 'Our facility is regularly cleaned and maintained to ensure a pleasant experience.'
+    },
+    {
+      icon: FoldHorizontal,
+      title: 'Wash & Fold Service',
+      sizes: ['Drop-Off', 'Full Service'],
+      description: 'Drop off your laundry and let us handle the washing, drying, and folding. Perfect for busy schedules!'
     }
   ];
-
-  const comingSoonService = {
-    icon: FoldHorizontal,
-    title: 'Wash & Fold Service',
-    sizes: ['Coming Soon'],
-    description: 'Drop off your laundry and let us handle the washing, drying, and folding. Perfect for busy schedules!'
-  };
 
   return (
     <section id="services" className="py-20 bg-white">
@@ -82,33 +81,6 @@ export default function Services() {
               </div>
             </div>
           ))}
-        </div>
-
-        <div className="max-w-4xl mx-auto mb-16">
-          <div className="card bg-gradient-to-br from-amber-50 to-orange-50 border-2 border-amber-200 shadow-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 bg-amber-500 text-white px-4 sm:px-6 py-1 sm:py-2 text-xs sm:text-sm font-bold transform rotate-12 translate-x-6 sm:translate-x-8 -translate-y-3 sm:-translate-y-4">
-              COMING SOON
-            </div>
-            <div className="card-body p-4 sm:p-8">
-              <div className="flex flex-col sm:flex-row items-start sm:space-x-4 space-y-4 sm:space-y-0">
-                <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-3 sm:p-4 rounded-lg flex-shrink-0 shadow-md">
-                  <comingSoonService.icon size={28} className="text-white sm:w-8 sm:h-8" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="card-title text-xl sm:text-2xl mb-2 text-gray-900">{comingSoonService.title}</h3>
-                  <div className="flex flex-wrap gap-2 mb-3">
-                    {comingSoonService.sizes.map((size, idx) => (
-                      <span key={idx} className="badge bg-amber-200 text-amber-900 border-amber-300 font-semibold">
-                        {size}
-                      </span>
-                    ))}
-                  </div>
-                  <p className="text-gray-700 text-sm sm:text-base">{comingSoonService.description}</p>
-                  <p className="text-xs sm:text-sm text-gray-600 mt-3 italic">Stay tuned for more details on pricing and availability!</p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
