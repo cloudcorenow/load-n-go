@@ -1,4 +1,4 @@
-export default function Flyer() {
+function Flyer() {
   return (
     <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -21,5 +21,4 @@ export default function Flyer() {
   );
 }
 
-
-export default Flyer
+export default Flyer;
