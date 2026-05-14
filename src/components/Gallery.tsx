@@ -64,6 +64,16 @@ export default function Gallery() {
       url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/214482c1-d792-4b99-4441-827bb215f600/public',
       alt: 'Full facility view',
       title: 'Your Laundry Destination'
+    },
+    {
+      url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/37ab2cf5-a685-4876-8dcf-f4b4e747b200/public',
+      alt: 'Load N-GO Laundromat interior',
+      title: 'Inside Load N-GO'
+    },
+    {
+      url: 'https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/a120e316-d64b-4461-dd91-da5d354a2500/public',
+      alt: 'Load N-GO Laundromat machines',
+      title: 'Our Equipment'
     }
   ];
 
