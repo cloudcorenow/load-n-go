@@ -9,7 +9,7 @@ export default function Flyer() {
         <div className="flex justify-center">
           <div className="max-w-2xl w-full">
             <img
-              src="https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/9d77b3a7-282d-480b-1471-2b207a617800/public"
+              src="https://imagedelivery.net/s0JEtwqnLquT1GUYjPcg5Q/da2641d5-6063-480d-62b0-226d52171500/public"
               alt="Load N-GO special offer flyer"
               className="w-full h-auto block"
               loading="lazy"
@@ -20,3 +20,6 @@ export default function Flyer() {
     </section>
   );
 }
+
+
+export default Flyer
