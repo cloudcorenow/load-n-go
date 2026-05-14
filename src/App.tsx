@@ -1,6 +1,7 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import Flyer from './components/Flyer';
 import HowItWorks from './components/HowItWorks';
 import Services from './components/Services';
 import Gallery from './components/Gallery';
@@ -16,7 +17,8 @@ export default function App() {
       <main>
         <Hero />
         <About />
-<HowItWorks />
+        <Flyer />
+        <HowItWorks />
         <Services />
         <Gallery />
         <Location />
