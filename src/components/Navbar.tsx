@@ -48,7 +48,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://app.trycents.com/new-order/yzdr/home"
+            href="https://app.trycents.com/order/business/OWs5/Yzdr"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden md:flex items-center justify-center btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0 text-center"
@@ -89,7 +89,7 @@ export default function Navbar() {
               Contact
             </button>
             <a
-              href="https://app.trycents.com/new-order/yzdr/home"
+              href="https://app.trycents.com/order/business/OWs5/Yzdr"
               target="_blank"
               rel="noopener noreferrer"
               className="btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0 w-full"
