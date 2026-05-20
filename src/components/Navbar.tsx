@@ -51,7 +51,7 @@ export default function Navbar() {
             href="https://app.trycents.com/new-order/yzdr/home"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden md:block btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0"
+            className="hidden md:flex items-center justify-center btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0 text-center"
           >
             Order Wash &amp; Fold
           </a>
