@@ -47,12 +47,14 @@ export default function Navbar() {
             </button>
           </div>
 
-          <button
-            onClick={() => scrollToSection('contact')}
+          <a
+            href="https://app.trycents.com/new-order/yzdr/home"
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden md:block btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0"
           >
-            Get Started
-          </button>
+            Order Wash &amp; Fold
+          </a>
 
           <button
             className="md:hidden text-gray-700"
@@ -86,12 +88,14 @@ export default function Navbar() {
             <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-gray-700 hover:text-[#2B7BBF] font-medium py-2">
               Contact
             </button>
-            <button
-              onClick={() => scrollToSection('contact')}
+            <a
+              href="https://app.trycents.com/new-order/yzdr/home"
+              target="_blank"
+              rel="noopener noreferrer"
               className="btn bg-[#2B7BBF] hover:bg-[#1E5A8F] text-white border-0 w-full"
             >
-              Get Started
-            </button>
+              Order Wash &amp; Fold
+            </a>
           </div>
         )}
       </div>
